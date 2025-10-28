@@ -25,6 +25,12 @@ const itemVariants: Variants = {
 };
 
 export const Hero: React.FC = () => {
+  const handleScheduleClick = () => {
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/fmatiascubells/reunion' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden bg-black">
       <div className="absolute inset-0 z-0">
@@ -59,6 +65,7 @@ export const Hero: React.FC = () => {
             className="mt-10 px-8 py-4 bg-brand-cyan text-black font-bold rounded-lg text-lg shadow-cyan-glow transform transition-transform duration-300"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
+            onClick={handleScheduleClick}
           >
             Agendar auditoría gratuita
           </motion.button>

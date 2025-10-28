@@ -2,6 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export const CTA: React.FC = () => {
+  const handleScheduleClick = () => {
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/fmatiascubells/reunion' });
+    }
+  };
+
   return (
     <section className="relative py-20 sm:py-32 bg-black text-center overflow-hidden">
         <div 
@@ -27,6 +33,7 @@ export const CTA: React.FC = () => {
                 }}
                 whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleScheduleClick}
             >
                 Agenda una auditoría gratuita
             </motion.button>

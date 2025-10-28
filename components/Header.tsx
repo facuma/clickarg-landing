@@ -12,6 +12,12 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleScheduleClick = () => {
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/fmatiascubells/reunion' });
+    }
+  };
+
   return (
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-dark-bg/80 backdrop-blur-sm border-b border-gray-800' : 'bg-transparent'}`}
@@ -31,6 +37,7 @@ export const Header: React.FC = () => {
             className="hidden md:block px-6 py-2 bg-brand-cyan text-black font-bold rounded-lg text-base shadow-cyan-glow transform transition-transform duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={handleScheduleClick}
           >
             Agendar auditoría gratuita
           </motion.button>
