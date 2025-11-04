@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { WhyAI } from './components/WhyAI';
@@ -9,8 +10,9 @@ import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { GridBackground } from './components/GridBackground';
+import WelcomePage from './components/WelcomePage';
 
-function App() {
+const MainLayout = () => {
   const sections = [
     { id: 'inicio', name: 'Inicio' },
     { id: 'beneficios', name: 'Beneficios' },
@@ -38,6 +40,17 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/welcome/:nombre" element={<WelcomePage />} />
+      </Routes>
+    </Router>
   );
 }
 
